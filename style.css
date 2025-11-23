@@ -1,0 +1,268 @@
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            color: #2f3651;
+            background-color: #82838c;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "header"
+                "hero"
+                "body"
+                "footer";
+        }
+
+        header {
+            grid-area: header; 
+            background-color: #d4d2b8;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border: 1px solid #007bff;
+        }
+
+        .logo {
+            background-color: #d4d2b8;
+            text-align: center;
+            border: 1px solid #99c2ff;
+            padding: 5px;
+        }
+
+        .navigation {
+            background-color: #d4d2b8;
+            padding: 10px;
+            flex: 1 1 auto;
+            text-align: left;
+            border: 1px solid #99c2ff;
+        }
+
+        .tools {
+            background-color: #d4d2b8;
+            padding: 10px;
+            flex: 1 1 auto;
+            text-align: center;
+            border: 1px solid #99c2ff;
+        }
+
+        .hero {
+            grid-area: hero;
+            background-color: #d4d2b8;
+            border: 1px solid #007bff;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .heroLeft {
+            background-color: #d4d2b8;
+            padding: 20px;
+            border: 1px solid #99c2ff;
+            flex-grow: 1;
+        }
+
+        .heroMiddle {
+            background-color: #d4d2b8;
+            padding: 20px;
+            border: 1px solid #99c2ff;
+            text-align: center;
+        }
+
+        
+        hero-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px;
+            margin-top: 10px;
+            
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .ad {
+            background-color: #d4d2b8;
+            color: #2f3651;
+            border: 1px solid #0056b3;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .adDesktop {
+            display: none;
+            grid-area: adDesktop; 
+        }
+
+        .adMobile {
+            display: block;
+            margin: 15px 0;
+            grid-area: adMobile;
+        }
+
+        .mainArea {
+            grid-area: body;
+            background-color: #d4d2b8;
+            border: 1px solid #007bff;
+            padding: 15px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .articleFeature {
+            background-color: #d4d2b8;
+            padding: 20px;
+            border: 1px solid #99c2ff;
+        }
+
+        .articleListing {
+            background-color: #d4d2b8;
+            padding: 20px;
+            border: 1px solid #99c2ff;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #d4d2b8;
+            border: 1px solid #007bff;
+            padding: 15px;
+            display: none;
+        }
+
+        .sidebarFeature {
+            background-color: #d4d2b8;
+            padding: 20px;
+            height: 100%;
+            border: 1px solid #99c2ff;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #d4d2b8;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #007bff;
+            font-weight: bold;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "hero"
+                    "body"
+                    "sidebar"
+                    "footer";
+            }
+
+            header {
+                flex-wrap: nowrap;
+            }
+            .logo { flex: 0 0 150px; text-align: left; }
+            .navigation { flex-grow: 1; }
+            .tools { flex: 0 0 100px; }
+
+            .mainArea {
+                grid-template-columns: 2fr 1fr;
+                grid-template-areas:
+                    "feat ad"
+                    "list list";
+            }
+
+            .articleFeature { grid-area: feat; }
+            
+            .adMobile { 
+                grid-area: ad; 
+                margin: 0;
+                height: 100%;
+            }
+
+            .articleListing { grid-area: list; }
+
+            .sidebar {
+                display: block;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                grid-template-columns: 1.2fr 1.2fr 1fr 0.8fr;
+                grid-template-areas:
+                    "header header header header"
+                    "hero hero hero adDesktop"
+                    "body body body sidebar"
+                    "footer footer footer footer";
+            }
+
+            .hero {
+                flex-direction: row;
+            }
+            .heroLeft { flex: 2; }
+            .heroMiddle { flex: 1; }
+
+            .adDesktop { display: flex; } 
+            .adMobile { display: none; } 
+
+            .mainArea {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr; 
+                grid-template-areas:
+                    "feat list";
+                padding: 0;
+                border: none;
+                background-color: transparent;
+            }
+            
+            .articleFeature { 
+                grid-area: feat; 
+                background-color: #d4d2b8; 
+                padding: 15px; 
+            } 
+            .articleListing { 
+                grid-area: list; 
+                background-color: #d4d2b8; 
+                padding: 15px; 
+            }
+            
+            .articleFeature > div, .articleListing > div {
+                background-color: #d4d2b8;
+                padding: 20px;
+                border: 1px solid #99c2ff;
+                height: 100%;
+            }
+        }
